@@ -8,7 +8,6 @@ Este projeto simula o gerenciamento de memória virtual com três algoritmos de 
 
 Use o `Makefile` fornecido. Para compilar o programa, basta executar:
 
-``bash
 make
 
 ## Execução
