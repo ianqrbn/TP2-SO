@@ -10,7 +10,7 @@
 
 int substituicao_lru(Quadro *tabela_quadros, int num_quadros)
 {
-    int vitima_idx = -1;
+    int id_substituicao = -1;
     unsigned long menor_timestamp = ULONG_MAX;
 
     // Encontra o quadro com o menor timestamp de acesso
@@ -19,10 +19,10 @@ int substituicao_lru(Quadro *tabela_quadros, int num_quadros)
         if (tabela_quadros[i].timestamp_acesso < menor_timestamp)
         {
             menor_timestamp = tabela_quadros[i].timestamp_acesso;
-            vitima_idx = i;
+            id_substituicao = i;
         }
     }
-    return vitima_idx;
+    return id_substituicao;
 }
 
 int substituicao_nru(Quadro *tabela_quadros, int num_quadros)
@@ -51,9 +51,9 @@ int substituicao_segunda_chance(Quadro *tabela_quadros, int num_quadros, int *po
     {
         if (!tabela_quadros[*ponteiro_relogio_ptr].referenciado)
         {
-            int vitima_idx = *ponteiro_relogio_ptr;
+            int id_substituicao = *ponteiro_relogio_ptr;
             *ponteiro_relogio_ptr = (*ponteiro_relogio_ptr + 1) % num_quadros;
-            return vitima_idx;
+            return id_substituicao;
         }
 
         // Dá uma segunda chance
